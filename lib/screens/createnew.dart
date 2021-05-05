@@ -12,7 +12,7 @@ class _createnewState extends State<createnew> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Create New Item!",
+          " ",
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent,
@@ -30,13 +30,18 @@ class _createnewState extends State<createnew> {
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
             TextField(
-              decoration: InputDecoration(
-                  hintText: "Enter Description", border: InputBorder.none),
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w200),
-            ),
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                decoration: InputDecoration(
+                    hintText: "Enter Description", border: InputBorder.none),
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w200),
+              ),
+
+            TODO(checked: false,)
           ],
         )),
       ),
+      floatingActionButton: FloatingActionButton(child: Icon(Icons.delete),),
     );
   }
 }

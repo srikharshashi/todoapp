@@ -48,9 +48,10 @@ class _TODOState extends State<TODO> {
     return
       Container(
         decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-        child: Row(
+        child: Column(
           children: [
             CheckboxListTile(value:widget.checked,
+                controlAffinity: ListTileControlAffinity.leading,
                 onChanged: (newValue) {
               setState(() {
                 widget.checked=newValue;
