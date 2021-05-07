@@ -36,7 +36,8 @@ class TaskCard extends StatelessWidget {
 
 class TODO extends StatefulWidget {
   var checked;
-  TODO({this.checked});
+  String text;
+  TODO({this.checked,this.text});
 
   @override
   _TODOState createState() => _TODOState();
@@ -47,10 +48,10 @@ class _TODOState extends State<TODO> {
   Widget build(BuildContext context) {
     return
       Container(
-        decoration: BoxDecoration(border: Border.all(color: Colors.black)),
         child: Column(
           children: [
             CheckboxListTile(value:widget.checked,
+                title: Text("${widget.text}"),
                 controlAffinity: ListTileControlAffinity.leading,
                 onChanged: (newValue) {
               setState(() {

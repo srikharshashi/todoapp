@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:todo_app/widgets.dart';
 
 class createnew extends StatefulWidget {
@@ -20,28 +21,43 @@ class _createnewState extends State<createnew> {
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Container(
-            child: Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                  hintText: "Enter Title", border: InputBorder.none),
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-            ),
-            TextField(
-                keyboardType: TextInputType.multiline,
-                maxLines: null,
-                decoration: InputDecoration(
-                    hintText: "Enter Description", border: InputBorder.none),
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w200),
-              ),
+          padding: const EdgeInsets.all(25.0),
+          child: ListView(children: [
+            Column(
+              children: [
+                Container(
+                  // decoration:
+                  //     BoxDecoration(border: Border.all(color: Colors.black)),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: "Enter Title", border: InputBorder.none),
+                    style:TextStyle(color: Colors.black,fontSize: 25,fontWeight: FontWeight.bold) ,
+                  ),
+                ),
+                Container(
+                  // decoration:
+                      // BoxDecoration(border: Border.all(color: Colors.black)),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: "Enter Decription", border: InputBorder.none),
+                    style:TextStyle(fontSize: 20,fontWeight: FontWeight.w100) ,
+                    // minLines: 2,
+                    maxLines: null,
+                  ),
+                ),
+                TODO(checked: false,text:"Lmao1"),
+                TODO(checked: false,text:"Lmao1"),
+                TODO(checked: false,text:"Lmao1"),
+                TODO(checked: false,text:"Lmao1"),
 
-            TODO(checked: false,)
-          ],
-        )),
+
+              ],
+            ),
+          ])),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.delete,),
+        backgroundColor: Colors.pinkAccent,
       ),
-      floatingActionButton: FloatingActionButton(child: Icon(Icons.delete),),
     );
   }
 }
