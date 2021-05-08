@@ -10,26 +10,30 @@ class TaskCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Card(
-          elevation: 0,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          child:Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height:10.0,),
-                Text("${title}",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
-                SizedBox(height:5.0,),
-                Text(loremIpsum(words: 40),style:TextStyle(fontWeight: FontWeight.w100),),
-                SizedBox(height:10.0,),
-              ],
-            ),
-          )
 
-      ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Container(
+            decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+            child: Card(
+              elevation: 0,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              child:Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height:10.0,),
+                    Text("${title}",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
+                    SizedBox(height:5.0,),
+                    Text(loremIpsum(words: 40),style:TextStyle(fontWeight: FontWeight.w100),),
+                    SizedBox(height:10.0,),
+                  ],
+                ),
+              )
+
+        ),
+          ),
     );
   }
 }
