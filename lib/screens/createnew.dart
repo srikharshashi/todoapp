@@ -4,13 +4,27 @@ import 'package:todo_app/database_helper.dart';
 import 'package:todo_app/widgets.dart';
 import 'package:todo_app/model/task model.dart';
 
+class taskpage extends StatefulWidget {
+  final Task task;
 
-class createnew extends StatefulWidget {
+  taskpage({this.task});
+
   @override
-  _createnewState createState() => _createnewState();
+  _taskpageState createState() => _taskpageState();
 }
 
-class _createnewState extends State<createnew> {
+class _taskpageState extends State<taskpage> {
+  String _taskTitle="";
+
+  @override
+  void initState() {
+    if(widget.task!=null)
+      {
+        _taskTitle=widget.task.title;
+      }
+
+        super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,21 +46,26 @@ class _createnewState extends State<createnew> {
                   // decoration:
                   //     BoxDecoration(border: Border.all(color: Colors.black)),
                   child: TextField(
+                    controller: TextEditingController()..text=_taskTitle,
                     decoration: InputDecoration(
                         hintText: "Enter Title", border: InputBorder.none),
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 25,
                         fontWeight: FontWeight.bold),
-                    onSubmitted: (value) async
-                    {
-                      if(value!="")
-                      {
-                        DataBaseHelper _dbHelper =DataBaseHelper();
-                        Task newtask=Task(title: value,);
-                        await _dbHelper.insertTask(newtask);
-                        // print("New task created");
+                    onSubmitted: (value) async {
+                      if (value != "") {
+                        if (widget.task == null) {
+                          DataBaseHelper _dbHelper = DataBaseHelper();
+                          Task newtask = Task(title: value);
+                          await _dbHelper.insertTask(newtask);
+                        }
+                        else
+                        {
+                          print("Task Update Trigger");
+                        }
                       }
+
                     },
                   ),
                 ),
@@ -64,9 +83,7 @@ class _createnewState extends State<createnew> {
                   ),
                 ),
                 TODO(checked: false, text: "Lmao1"),
-                TODO(checked: false, text: "Lmao1"),
-                TODO(checked: false, text: "Lmao1"),
-                TODO(checked: false, text: "Lmao1"),
+
               ],
             ),
           ])),

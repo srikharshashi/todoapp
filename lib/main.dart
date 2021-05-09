@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(textTheme: GoogleFonts.nunitoSansTextTheme()),
       routes: {
         "/":(context) => Homee(),
-        "/createnew":(context) => createnew(),
+        "/createnew":(context) => taskpage(),
 
       },
     );

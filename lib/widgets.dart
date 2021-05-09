@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lorem_ipsum/lorem_ipsum.dart';
+import 'package:todo_app/model/task%20model.dart';
 
 class TaskCard extends StatelessWidget {
-  String title;
-  TaskCard({this.title});
+  final String title;
+  final String desc;
+
+  TaskCard({this.title, this.desc});
 
 
   @override
