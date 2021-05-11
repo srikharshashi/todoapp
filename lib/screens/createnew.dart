@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:todo_app/database_helper.dart';
 import 'package:todo_app/widgets.dart';
 import 'package:todo_app/model/task model.dart';
@@ -15,6 +16,7 @@ class taskpage extends StatefulWidget {
 
 class _taskpageState extends State<taskpage> {
   String _taskTitle="";
+  String _todoTitle;
 
   @override
   void initState() {
@@ -24,6 +26,30 @@ class _taskpageState extends State<taskpage> {
       }
 
         super.initState();
+  }
+TextEditingController customcontroler=TextEditingController();
+  Future<String>createAlertDia(context)
+  {
+    return showDialog(context: context,
+        builder: (context)
+        {
+          return AlertDialog(
+
+            title: Text("Create TODO!!"),
+            content: TextField(
+              controller: customcontroler,
+            ),
+            actions: [
+              ElevatedButton(child: Text("Submit!"),
+                onPressed: (){
+                Navigator.of(context).pop(customcontroler.text.toString());
+                customcontroler.clear();
+
+              },),
+            ],
+          );
+        }
+    );
   }
   @override
   Widget build(BuildContext context) {
@@ -87,12 +113,21 @@ class _taskpageState extends State<taskpage> {
               ],
             ),
           ])),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.delete,
-        ),
-        backgroundColor: Colors.pinkAccent,
-      ),
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_arrow,
+        children:[
+          SpeedDialChild(
+            child: Icon(Icons.delete_forever),),
+            SpeedDialChild(
+            child: Icon(Icons.access_alarm),
+            onTap:() async => createAlertDia(context).then((value) {_todoTitle=value;print(_todoTitle);} )
+            ),
+
+
+        ],
+
+
+      )
     );
   }
 }
