@@ -5,7 +5,7 @@ import 'package:todo_app/model/task%20model.dart';
 
 class TaskCard extends StatelessWidget {
   final String title;
-  final String desc;
+   String desc;
 
   TaskCard({this.title, this.desc});
 
@@ -16,7 +16,7 @@ class TaskCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+            // decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
             child: Card(
               elevation: 0,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -28,7 +28,7 @@ class TaskCard extends StatelessWidget {
                     SizedBox(height:10.0,),
                     Text("${title}",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
                     SizedBox(height:5.0,),
-                    Text(loremIpsum(words: 40),style:TextStyle(fontWeight: FontWeight.w100),),
+                    Text(desc ?? "No Description Avialable",style:TextStyle(fontWeight: FontWeight.w100),),
                     SizedBox(height:10.0,),
                   ],
                 ),

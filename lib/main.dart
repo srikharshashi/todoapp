@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(textTheme: GoogleFonts.nunitoSansTextTheme()),
+       theme:ThemeData(textTheme: GoogleFonts.nunitoSansTextTheme()),
       routes: {
         "/":(context) => Homee(),
         "/createnew":(context) => taskpage(),

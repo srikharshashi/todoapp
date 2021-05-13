@@ -23,24 +23,30 @@ DataBaseHelper _dataBaseHelper =DataBaseHelper();
                 return ListView.builder(
                   itemBuilder:(context,index) =>
                       GestureDetector(
-                          child: TaskCard(title: snapshot.data[index].title),
+                          child: TaskCard(title: snapshot.data[index].title,desc: snapshot.data[index].description,),
                           onTap: (){
                           Navigator.push(context,
                           MaterialPageRoute(
                               builder: (context) => taskpage(task: snapshot.data[index])
                           )
-                      );
+                      ).then((value) {setState(() {
+
+                      });});
                     },
                   ),
                   itemCount:snapshot.data.length,);
               }
           ),
         ),
-        floatingActionButton: FloatingActionButton(onPressed: (){Navigator.push(context,
-            MaterialPageRoute(
-                builder: (context) => taskpage(task: null)
-            )
-        ).then((value) => setState(() {}));
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            Navigator.push(context,
+                MaterialPageRoute(
+                    builder: (context) => taskpage(task: null)
+                )
+            ).then((value) {setState(() {
+
+            });});
         },
           child: Image(
             image: AssetImage(
